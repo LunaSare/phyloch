@@ -19,6 +19,9 @@ axisGeo <- function(GTS, tip.time = 0, unit = c("epoch", "period"), ages =
   
   # Geological Time Scale:
   # ----------------------
+  if(is.null(GTS)){
+    stop("object 'GTS' is null. It should be a data frame of times.")
+  }
   gts <- GTS
   maid <- grep("MA", names(gts))
   gts <- cbind(gts[, 1:maid], c(0, head(gts[, maid], -1)), gts[, ((maid + 1):dim(gts)[2])])
